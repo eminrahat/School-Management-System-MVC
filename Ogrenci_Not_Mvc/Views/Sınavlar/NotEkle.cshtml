@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Yeni Not Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-plus-sign"></i> Yeni Not Kaydı
+    </h2>
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-list-alt"></i> Öğrenci ve Sınav Bilgilerini Girin
+                </div>
+                <div class="panel-body">
+
+                    <form method="post">
+                        <div class="form-group">
+
+                            <!-- 1. Satır: ID Yerine Açılır Listeler (Dropdown) -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Öğrenci Seçin</label>
+                                    @Html.DropDownList("OgrenciID", (List<SelectListItem>)ViewBag.OgrList, "Öğrenci Seçiniz", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Ders Seçin</label>
+                                    @Html.DropDownList("DersId", (List<SelectListItem>)ViewBag.DersList, "Ders Seçiniz", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <!-- 2. Satır: Sınav 1 ve 2 -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>1. Sınav</label>
+                                    <input type="number" class="form-control" name="Sınav1" min="0" max="100" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>2. Sınav</label>
+                                    <input type="number" class="form-control" name="Sınav2" min="0" max="100" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <!-- 3. Satır: Sınav 3 ve Proje -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>3. Sınav</label>
+                                    <input type="number" class="form-control" name="Sınav3" min="0" max="100" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Proje</label>
+                                    <input type="number" class="form-control" name="Proje" min="0" max="100" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr />
+
+                        <button type="submit" class="btn btn-info btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-saved"></i> Not Kaydını Sisteme Ekle
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <a href="/Sinavlar/Index" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>
+</div>

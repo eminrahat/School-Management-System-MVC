@@ -1,0 +1,72 @@
+﻿@using Ogrenci_Not_Mvc.Models.EntityFremework;
+@model List<TblDersler>
+@{
+    ViewBag.Title = "Dersler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Tablo içeriğini ve başlıkları ortalamak için CSS */
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+</style>
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-book"></i> Ders Yönetim Paneli
+    </h2>
+    <br />
+
+    <!-- Tabloyu Saran Panel -->
+    <div class="panel panel-kurumsal">
+        <div class="panel-heading" style="font-size:16px;">
+            <i class="glyphicon glyphicon-th-list"></i> Aktif Ders Listesi
+        </div>
+        <div class="panel-body" style="padding: 0;">
+
+            <table class="table table-bordered table-striped table-hover" style="margin-bottom: 0;">
+                <thead>
+                    <tr class="tr-kurumsal">
+                        <!-- Başlık satırına hafif mavi arkaplan -->
+                        <th>Ders ID</th>
+                        <th>Ders Adı</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var drs in Model)
+                    {
+                        <tr>
+                            <td>@drs.DersId</td>
+                            <td>@drs.DersAd</td>
+
+                            <td>
+                                <!-- title özelliği sayesinde fareyle üzerine gelince ne olduğu yazar -->
+                                <a href="/Default/dersgetir/@drs.DersId" class="btn btn-warning btn-sm" title="Güncelle">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="/Default/DersSıl/@drs.DersId" class="btn btn-danger btn-sm" title="Sil" onclick="return confirm('Silinsin mi?');">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- Butonu panelin en altına, tablo dışına aldık -->
+        <div class="panel-footer" style="text-align: left;">
+            <a href="/Default/YeniDers" class="btn btn-kurumsal">
+                <i class="glyphicon glyphicon-plus"></i> Yeni Ders Kaydı
+            </a>
+        </div>
+
+    </div>
+</div>

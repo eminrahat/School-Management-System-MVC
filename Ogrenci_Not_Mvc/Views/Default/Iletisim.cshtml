@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Sistem İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Kendi layout'unun adıyla aynı olduğundan emin ol
+}
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-earphone"></i> İletişim & Destek Paneli
+    </h2>
+    <br />
+
+    <div class="row">
+        İletişim Kartı 1: Teknik Destek
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-wrench"></i> Teknik Destek
+                </div>
+                <div class="panel-body">
+                    <p><strong>Yetkili:</strong> Emin Rahat</p>
+                    <p><strong>E-Posta:</strong> admin@okulsistemi.com</p>
+                    <p><strong>Dahili:</strong> 101</p>
+                    <hr />
+                    <p class="text-muted"><small>Sistemsel hatalar, veritabanı sorunları ve sayfa çökmeleri için bu birimle iletişime geçin.</small></p>
+                </div>
+            </div>
+        </div>
+        İletişim Kartı 2: Öğrenci İşleri
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-education"></i> Öğrenci İşleri
+                </div>
+                <div class="panel-body">
+                    <p><strong>Birim:</strong> Merkez Kampüs</p>
+                    <p><strong>Telefon:</strong> 0212 555 44 33</p>
+                    <p><strong>Çalışma Saatleri:</strong> 09:00 - 17:00</p>
+                    <hr />
+                    <p class="text-muted"><small>Öğrenci kaydı, not itirazları ve kulüp değişiklikleri gibi idari işlemler için.</small></p>
+                </div>
+            </div>
+        </div>
+        Hızlı Mesaj Formu (Şimdilik Görsel)
+        <div class="col-md-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-envelope"></i> Hızlı Bildirim Gönder
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Konu</label>
+                            <input type="text" class="form-control" placeholder="Örn: Not girişi hatası">
+                        </div>
+                        <div class="form-group">
+                            <label>Mesajınız</label>
+                            <textarea class="form-control" rows="4" placeholder="Yaşadığınız sorunu kısaca açıklayın..."></textarea>
+                        </div>
+                        <button type="button" class="btn btn-warning btn-block" onclick="alert('Mesajınız sistem yöneticisine iletildi.');">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h2 style="color:#2c3e50; margin-bottom:20px;"><i class="glyphicon glyphicon-dashboard"></i> Sistem İstatistikleri</h2>
+
+<div class="row">
+    <!-- 1. Kart: Öğrenci Sayısı (Mavi) -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary text-center" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="panel-heading" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                <i class="glyphicon glyphicon-user" style="font-size:30px; margin-top:10px;"></i>
+                <h4>Toplam Öğrenci</h4>
+            </div>
+            <div class="panel-body">
+                <h2 style="font-weight:bold; color:#ff0000;">@ViewBag.ToplamOgrenci</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Kart: Ders Sayısı (Yeşil) -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-success text-center" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="panel-heading" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                <i class="glyphicon glyphicon-book" style="font-size:30px; margin-top:10px;"></i>
+                <h4>Aktif Dersler</h4>
+            </div>
+            <div class="panel-body">
+                <h2 style="font-weight:bold; color:#2c3e50;">@ViewBag.ToplamDers</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Kart: Kulüp Sayısı (Turuncu) -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-warning text-center" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="panel-heading" style="border-top-left-radius: 8px; border-top-right-radius: 8px; color:black;">
+                <i class="glyphicon glyphicon-flag" style="font-size:30px; margin-top:10px;"></i>
+                <h4>Kulüp Sayısı</h4>
+            </div>
+            <div class="panel-body">
+                <h2 style="font-weight:bold; color:#2c3e50;">@ViewBag.ToplamKulup</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Kart: Kalan Öğrenciler (Kırmızı) -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-danger text-center" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="panel-heading" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                <i class="glyphicon glyphicon-remove-sign" style="font-size:30px; margin-top:10px;"></i>
+                <h4>Başarısız Sınavlar</h4>
+            </div>
+            <div class="panel-body">
+                <h2 style="font-weight:bold; color:#2c3e50;">@ViewBag.KalanOgrenci</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 5. Kart: Geçen Öğrenciler (Turkuaz) -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-info text-center" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="panel-heading" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                <i class="glyphicon glyphicon-ok-sign" style="font-size:30px; margin-top:10px;"></i>
+                <h4>Geçen Öğrenciler</h4>
+            </div>
+            <div class="panel-body">
+                <h2 style="font-weight:bold; color:#2c3e50;">@ViewBag.GecenOgrenci</h2>
+            </div>
+        </div>
+    </div>
+</div>

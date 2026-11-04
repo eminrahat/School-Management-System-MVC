@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Yeni Ders Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-plus-sign"></i> Yeni Ders Kaydı
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu yatayda uzamasın diye ekranın sol yarısına (col-md-6) sabitliyoruz -->
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-book"></i> Ders Bilgilerini Girin
+                </div>
+                <div class="panel-body">
+
+                    <!-- Senin kurduğun form yapısı -->
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Dersin Adı</label>
+                            <input type="text" class="form-control" name="DersAd" placeholder="Örn: Veri Tabanı Yönetimi" required />
+                        </div>
+
+                        <hr />
+
+                        <!-- Geniş ve dikkat çekici Ekle butonu -->
+                        <button type="submit" class="btn btn-info btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-saved"></i> Dersi Sisteme Ekle
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- Geri Dön Butonu -->
+            <a href="/Default/Index" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>
+</div>

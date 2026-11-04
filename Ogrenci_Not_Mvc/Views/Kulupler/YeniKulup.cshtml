@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Yeni Kulüp Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-plus-sign"></i> Yeni Kulüp Kaydı
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu ekranın sol yarısında derli toplu tutmak için col-md-6 -->
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-list-alt"></i> Kulüp Bilgilerini Girin
+                </div>
+                <div class="panel-body">
+
+                    <!-- Senin kullandığın düz HTML form yapısı -->
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Kulüp Adı</label>
+                            <input type="text" class="form-control" name="KulupAd" placeholder="Örn: Yazılım ve Bilişim Kulübü" required />
+
+                            <br />
+
+                            <label>Kulüp Kontenjanı</label>
+                            <!-- Rakam girilmesi için type="number" yapıldı -->
+                            <input type="number" class="form-control" name="KulupKontenjan" placeholder="Örn: 40" required />
+                        </div>
+
+                        <hr />
+
+                        <!-- Geniş, dikkat çekici Ekle butonu -->
+                        <button type="submit" class="btn btn-info btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-saved"></i> Kulübü Sisteme Ekle
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- Geri Dön Butonu -->
+            <a href="/Kulupler/Index" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>
+</div>

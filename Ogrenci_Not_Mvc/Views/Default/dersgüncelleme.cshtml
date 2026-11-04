@@ -1,0 +1,52 @@
+﻿@model Ogrenci_Not_Mvc.Models.EntityFremework.TblDersler
+@{
+    ViewBag.Title = "Ders Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-edit"></i> Ders Güncelleme İşlemi
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu derli toplu tutmak için ekranın yarısına (col-md-6) alıyoruz -->
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-pencil"></i> Ders Bilgilerini Düzenle
+                </div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("dersgüncelleme", "Default", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DersAd, "Dersin Adı")
+                            @Html.TextBoxFor(m => m.DersAd, new { @class = "form-control" })
+                        </div>
+
+                        <!-- Arka Planda Dönecek Gizli ID -->
+                        @Html.HiddenFor(m => m.DersId)
+
+                        <hr />
+
+                        <!-- Butonu genişlettik (btn-block) ve sarı (btn-warning) yaptık -->
+                        <button type="submit" class="btn btn-warning btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-refresh"></i> Dersi Kaydet ve Güncelle
+                        </button>
+                    }
+
+                </div>
+            </div>
+
+            <!-- Geri Dön Butonu -->
+            <a href="/Default/Index" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>
+</div>

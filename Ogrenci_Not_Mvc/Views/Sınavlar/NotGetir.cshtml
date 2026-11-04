@@ -1,0 +1,89 @@
+﻿@model Ogrenci_Not_Mvc.Models.EntityFremework.TblNotlar
+@{
+    ViewBag.Title = "NotGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-edit"></i> Not Güncelleme İşlemi
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu ekranın sol yarısında derli toplu tutmak için col-md-6 kullanıyoruz -->
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-pencil"></i> Öğrenci Not Bilgileri
+                </div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("NotGuncelle", "Sinavlar", FormMethod.Post))
+                    {
+                        <div class="form-group">
+
+                            <!-- 1. BÖLÜM: Değiştirilemez (Readonly) Alanlar -->
+                            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; border: 1px solid #eee;">
+                                @Html.LabelFor(m => m.TblDersler.DersAd, "Ders Adı")
+                                @Html.TextBoxFor(m => m.TblDersler.DersAd, new { @class = "form-control", @readonly = "readonly" })
+
+                                <br />
+
+                                <label>Öğrenci Adı Soyadı</label>
+                                <input type="text" class="form-control" readonly="readonly" value="@Model.TblOgrenciler.OgrenciAd @Model.TblOgrenciler.OgrenciSoyad" />
+                            </div>
+
+                            <hr style="border-top: 1px dashed #ccc;" />
+
+                            <!-- 2. BÖLÜM: Not Giriş Alanları (Yan yana 2'li düzen) -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>1. Sınav</label>
+                                    @Html.TextBoxFor(m => m.Sınav1, new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>2. Sınav</label>
+                                    @Html.TextBoxFor(m => m.Sınav2, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>3. Sınav</label>
+                                    @Html.TextBoxFor(m => m.Sınav3, new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Proje Notu</label>
+                                    @Html.TextBoxFor(m => m.Proje, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Arka Planda Dönecek Gizli ID -->
+                        @Html.HiddenFor(m => m.NotId)
+
+                        <hr />
+
+                        <!-- Butonu bloğun tamamını kaplayacak şekilde (btn-block) tasarladık -->
+                        <button type="submit" class="btn btn-warning btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-refresh"></i> Notları Kaydet ve Güncelle
+                        </button>
+                    }
+
+                </div>
+            </div>
+
+            <!-- Geri Dön Butonu -->
+            <a href="/Sınavlar/Index" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>
+</div>

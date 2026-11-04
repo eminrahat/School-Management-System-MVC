@@ -1,0 +1,69 @@
+﻿@model Ogrenci_Not_Mvc.Models.EntityFremework.TblOgrenciler
+@{
+    ViewBag.Title = "Öğrenci Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+    
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-edit"></i> Öğrenci Güncelleme İşlemi
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu derli toplu tutmak için ekranın yarısına (col-md-6) alıyoruz -->
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-pencil"></i> Öğrenci Bilgilerini Düzenle
+                </div>
+                <div class="panel-body">
+                    
+                    @using (Html.BeginForm("OgrenciGuncelle", "Ogrenciler", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            
+                            <label>Öğrenci Adı</label>
+                            @Html.TextBoxFor(m => m.OgrenciAd, new { @class = "form-control" })
+                            
+                            <br />
+                            
+                            <label>Öğrenci Soyadı</label>
+                            @Html.TextBoxFor(m => m.OgrenciSoyad, new { @class = "form-control" })
+                            
+                            <br />
+
+                            <label>Kulübü</label>
+                            @Html.DropDownListFor(m => m.OgrenciKulup, (List<SelectListItem>)ViewBag.Klb, new { @class = "form-control" })
+                            
+                            <br />
+
+                            <label>Cinsiyet</label>
+                            @Html.DropDownListFor(m => m.OgrenciCinsiyet, (List<SelectListItem>)ViewBag.Cinsiyet, new { @class = "form-control" })
+
+                        </div>
+                        
+                        <!-- Arka Planda Dönecek Gizli ID -->
+                        @Html.HiddenFor(m => m.OgrenciID)
+                        
+                        <hr />
+                        
+                        <!-- Butonu genişlettik (btn-block) ve standart sarı (btn-warning) yaptık -->
+                        <button type="submit" class="btn btn-warning btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-refresh"></i> Öğrenciyi Kaydet ve Güncelle
+                        </button>
+                    }
+                    
+                </div>
+            </div>
+            
+            <!-- Geri Dön Butonu -->
+            <a href="/Ogrenciler/ogrenc" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+            
+        </div>
+    </div>
+</div>

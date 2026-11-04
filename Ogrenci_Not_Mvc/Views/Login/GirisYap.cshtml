@@ -1,0 +1,183 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sisteme Giriş</title>
+    <!-- Karşılama ekranıyla aynı yazı tipini çekiyoruz -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            /* Karşılama ekranının bir tık koyu, gece modu versiyonu */
+            background: linear-gradient(-45deg, #0f2041, #1e3c72, #005c97, #00d2d3);
+            background-size: 400% 400%;
+            animation: arkaPlanAkar 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @@keyframes arkaPlanAkar {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Formun bulunduğu buzlu cam kutu */
+        .login-kutu {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 45px 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            color: white;
+            /* Yukarıdan zarifçe süzülerek gelme efekti */
+            animation: kutuGelis 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        @@keyframes kutuGelis {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .girdi-grubu {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+            .girdi-grubu label {
+                display: block;
+                margin-bottom: 8px;
+                font-size: 0.9rem;
+                color: #d1d8e0;
+            }
+
+        /* Modern, transparan input kutuları */
+        .form-kontrol {
+            width: 100%;
+            padding: 14px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+            .form-kontrol:focus {
+                border-color: #00d2d3;
+                background: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 12px rgba(0, 210, 211, 0.4);
+            }
+
+        /* Karşılama butonunun takım arkadaşı */
+        .btn-giris {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #0984e3, #00d2d3);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 210, 211, 0.3);
+        }
+
+            .btn-giris:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(0, 210, 211, 0.6);
+            }
+
+        /* Hata mesajı için şık ve sarsıntılı kırmızı kutu */
+        .hata-mesaji {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid rgba(255, 71, 87, 0.4);
+            color: #ff6b81;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            animation: sarsinti 0.4s ease-in-out;
+        }
+
+        @@keyframes sarsinti {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-6px);
+            }
+
+            75% {
+                transform: translateX(6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-kutu">
+        <h2>Sisteme Giriş</h2>
+
+        <!-- Backend'den gelen hatayı yakalama -->
+        @if (ViewBag.Hata != null)
+        {
+            <div class="hata-mesaji">@ViewBag.Hata</div>
+        }
+
+        <!-- DİKKAT: Metot adın "Index" ise aşağıyı "Index" yap, "GirisYap" ise "GirisYap" olarak kalsın -->
+        @using (Html.BeginForm("GirisYap", "Login", FormMethod.Post))
+        {
+            <div class="girdi-grubu">
+                <label>Öğrenci Adı</label>
+                <!-- name kısımları backend'deki veritabanı modelinle birebir aynı! -->
+                <input type="text" class="form-kontrol" name="OgrenciAd" autocomplete="off" required />
+            </div>
+
+            <div class="girdi-grubu">
+                <label>Şifre</label>
+                <input type="password" class="form-kontrol" name="Sifre" required />
+            </div>
+
+            <button type="submit" class="btn-giris">Giriş Yap</button>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿@model Ogrenci_Not_Mvc.Models.EntityFremework.TblOgrenciler
+@{
+    ViewBag.Title = "Yeni Öğrenci Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-user"></i> Yeni Öğrenci Kaydı
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu ekranın sol yarısında derli toplu tutmak için col-md-6 kullanıyoruz -->
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-plus-sign"></i> Öğrenci Bilgilerini Girin
+                </div>
+                <div class="panel-body">
+
+                    <form method="post">
+                        <div class="form-group">
+
+                            <label>Öğrenci Adı</label>
+                            <input type="text" class="form-control" name="OgrenciAd" placeholder="Örn: Ali" required />
+
+                            <br />
+
+                            <label>Öğrenci Soyadı</label>
+                            <input type="text" class="form-control" name="OgrenciSoyad" placeholder="Örn: Yılmaz" required />
+
+                            <br />
+
+                            <label>Öğrenci Cinsiyet</label>
+                            <input type="text" class="form-control" name="OgrenciCinsiyet" placeholder="Örn: Erkek / Kız" required />
+
+                            <br />
+
+                            <label>Öğrenci Kulüp</label>
+                            <!-- "From-Control" yazım hatasını "form-control" olarak düzelttik -->
+                            @Html.DropDownListFor(m => m.TblKulupler.KulupId, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+                        </div>
+
+                        <hr />
+
+                        <!-- Geniş ve dikkat çekici Ekle butonu -->
+                        <button type="submit" class="btn btn-info btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-saved"></i> Öğrenciyi Sisteme Ekle
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- Geri Dön Butonu -->
+            <a href="/Ogrenciler/ogrenc" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@*<div style="margin-top:10px">
+        <label>Film Seçin</label>
+        <select id="MovieType" name="MovieType">
+            <option value="0">Aksiyon</option>
+
+            <option value="1">Drama</option>
+
+            <option value="2">komadi</option>
+
+            <option value="3">bilim kurgu</option>
+
+        </select>
+    </div>*@
+@*<div style="margin-top:10px">
+           @Html.DropDownList("DersAd", null,"Ders Seçin", new { @class = "From-conrtol"})
+    </div>*@
+@*<div style="margin-top:10px">
+        <label>Şehir Seçimi</label>
+        @Html.DropDownList("Şehirler",
+       new[]
+       {
+           new SelectListItem() {Value="1", Text="ankara"},
+           new SelectListItem() {Value="2", Text="Bursa"},
+           new SelectListItem() {Value="3", Text="Sivas"},
+           new SelectListItem() {Value="4", Text="Trabzon"}
+       }, "şehşr seçniz", new { @class = "form-control" })
+    </div>*@
+

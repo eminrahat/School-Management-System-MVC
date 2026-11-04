@@ -1,0 +1,111 @@
+﻿@using Ogrenci_Not_Mvc.Models.EntityFremework;
+@using PagedList
+@using PagedList.Mvc;
+@model IPagedList<Ogrenci_Not_Mvc.Models.EntityFremework.TblOgrenciler>
+@{
+    ViewBag.Title = "Öğrenciler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Tablo içeriğini ve başlıkları ortalamak için CSS */
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+</style>
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-education"></i> Öğrenci Yönetim Paneli
+    </h2>
+    <br />
+
+    <!-- Tabloyu Saran Panel -->
+    <div class="panel panel-kurumsal">
+        <div class="panel-heading" style="font-size:16px;">
+            <i class="glyphicon glyphicon-th-list"></i> Kayıtlı Öğrenci Listesi
+        </div>
+        <div class="panel-body" style="padding: 0;">
+
+            @using (Html.BeginForm("ogrenc", "Ogrenciler", FormMethod.Get))
+            {
+                <div class="row" style="margin-bottom:20px;">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <!-- Arama kutusu. name="p" kısmı Controller'daki string p ile birebir aynı olmalı -->
+                            <input type="text" name="p" class="form-control" placeholder="Öğrenci adı ile ara...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i> Ara
+                                </button>
+
+                                <a href="/Ogrenciler/ExcelIndir" class="btn btn-success" title="Excel'e Aktar">
+                                    <i class="glyphicon glyphicon-download"></i> İndir
+                                </a>
+                            </span>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+
+            <table class="table table-bordered table-striped table-hover" style="margin-bottom: 0;">
+                <thead>
+                    <tr class="tr-kurumsal">
+                        <!-- Başlık satırına hafif mavi arkaplan -->
+                        <th>Öğrenci ID</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Cinsiyet</th>
+                        <th>Kulüp</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var ogr in Model)
+                    {
+                        <tr>
+                            <td>@ogr.OgrenciID</td>
+                            <td>@ogr.OgrenciAd</td>
+                            <td>@ogr.OgrenciSoyad</td>
+                            <td>@ogr.OgrenciCinsiyet</td>
+
+                            <!-- Senin null kontrolünü koruyarak ekrana yazdırıyoruz -->
+                            <td>@(ogr.TblKulupler != null ? ogr.TblKulupler.KulupAD : "Kulüp Atanmamış")</td>
+
+                            <td>
+                                <a href="/Ogrenciler/GetirOgrenci/@ogr.OgrenciID" class="btn btn-warning btn-sm" title="Güncelle">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="/Ogrenciler/OgrenciSil/@ogr.OgrenciID" class="btn btn-danger btn-sm" title="Sil" onclick="return confirm('Silinsin mi?');">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("ogrenc", new { sayfa, p = Request.QueryString["p"] }))
+
+
+        </div>
+
+        <!-- Butonu panelin en altına, tablo dışına aldık -->
+        <div class="panel-footer" style="text-align: left;">
+            <a href="/Ogrenciler/OgrenciEkleme" class="btn btn-kurumsal">
+                <i class="glyphicon glyphicon-plus"></i> Yeni Öğrenci Kaydı
+            </a>
+        </div>
+
+    </div>
+</div>

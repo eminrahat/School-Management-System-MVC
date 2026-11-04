@@ -1,0 +1,180 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sisteme Hoş Geldiniz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw; /* Ekranın genişliğini %100 zorunlu kapla */
+            height: 100vh; /* Ekranın yüksekliğini %100 zorunlu kapla */
+            overflow: hidden; /* Sağda solda taşma, kaydırma çubuğu çıkmasın */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #0f2041, #1e3c72, #005c97, #00d2d3);
+            background-size: 400% 400%;
+            background-repeat: no-repeat; /* Arka planı kesinlikle tekrar etme (Çizgiyi yok eden kod) */
+            background-attachment: fixed; /* Arka planı ekrana çivile */
+            animation: arkaPlanAkar 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @@keyframes arkaPlanAkar {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Buzlu Cam (Glassmorphism) Efektli Merkez Kart */
+        .merkez-kutu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px 70px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            z-index: 10;
+            animation: kartGelis 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @@keyframes kartGelis {
+            0% {
+                transform: translate(-50%, -40%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 35px;
+            color: #e0e0e0;
+        }
+
+        /* Şık Giriş Butonu */
+        .btn-giris {
+            display: inline-block;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e3c72;
+            background: white;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+
+            .btn-giris:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 8px 25px rgba(255,255,255,0.5);
+                color: #0984e3;
+                text-decoration: none;
+            }
+
+        /* Usulca Süzülen Objeler (Pat diye yok olma sorunu çözüldü) */
+        .suzulen-obje {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            z-index: 1;
+            /* Çapraz süzülme animasyonu */
+            animation: caprazSuzul 14s infinite linear;
+        }
+
+        /* Başlangıçta görünmez, ortada belirgin, sonda yine görünmez */
+        @@keyframes caprazSuzul {
+            0% {
+                transform: translate(-10vw, 110vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            80% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(110vw, -10vh) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Farklı yönlerden süzülen alternatif animasyon */
+        @@keyframes caprazSuzulTers {
+            0% {
+                transform: translate(110vw, 110vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.5;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translate(-10vw, -10vh) rotate(-360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Süzülen Objeler (Gecikmeler, pozisyonlar ve yönler karıştırıldı) -->
+    <div class="suzulen-obje" style="left: 10%; animation-delay: 0s;">📚</div>
+    <div class="suzulen-obje" style="left: 80%; animation-name: caprazSuzulTers; animation-delay: 3s; animation-duration: 18s;">🎓</div>
+    <div class="suzulen-obje" style="left: 30%; animation-delay: 7s; animation-duration: 16s;">💡</div>
+    <div class="suzulen-obje" style="left: 60%; animation-name: caprazSuzulTers; animation-delay: 1s; animation-duration: 15s;">📝</div>
+    <div class="suzulen-obje" style="left: 40%; animation-delay: 10s; animation-duration: 20s;">🌟</div>
+    <div class="suzulen-obje" style="left: 90%; animation-name: caprazSuzulTers; animation-delay: 6s; animation-duration: 12s;">📐</div>
+
+    <!-- Ortadaki Buzlu Cam Kartımız -->
+    <div class="merkez-kutu">
+        <h1>ÖĞRENCİ YÖNETİMİ</h1>
+        <p>Geleceğin dijital kampüsüne hoş geldiniz.</p>
+        <a href="/Login/GirisYap" class="btn-giris">Sisteme Giriş Yap</a>
+    </div>
+
+</body>
+</html>

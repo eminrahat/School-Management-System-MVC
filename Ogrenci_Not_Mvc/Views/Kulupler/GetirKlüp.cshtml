@@ -1,0 +1,58 @@
+﻿@model Ogrenci_Not_Mvc.Models.EntityFremework.TblKulupler
+@{
+    ViewBag.Title = "GetirKlüp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-edit"></i> Kulüp Güncelleme İşlemi
+    </h2>
+    <br />
+
+    <div class="row">
+        <!-- Formu ekranın sol yarısında derli toplu tutmak için col-md-6 kullanıyoruz -->
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading" style="font-size:16px;">
+                    <i class="glyphicon glyphicon-pencil"></i> Kulüp Bilgilerini Düzenle
+                </div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("güncelle", "Kulupler", FormMethod.Post))
+                    {
+                        <div class="form-group">
+
+                            <label>Kulüp Adı</label>
+                            @Html.TextBoxFor(m => m.KulupAD, new { @class = "form-control" })
+
+                            <br />
+
+                            <label>Kulüp Kontenjanı</label>
+                            @Html.TextBoxFor(m => m.KulupKontenjan, new { @class = "form-control" })
+
+                        </div>
+
+                        <!-- Arka Planda Dönecek Gizli ID -->
+                        @Html.HiddenFor(m => m.KulupId)
+
+                        <hr />
+
+                        <!-- Butonu bloğun tamamını kaplayacak şekilde (btn-block) tasarladık -->
+                        <button type="submit" class="btn btn-warning btn-block" style="font-size: 16px; font-weight: bold;">
+                            <i class="glyphicon glyphicon-refresh"></i> Kulübü Kaydet ve Güncelle
+                        </button>
+                    }
+
+                </div>
+            </div>
+
+            <!-- Geri Dön Butonu -->
+            <a href="/Kulupler/Index" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i> Listeye Geri Dön
+            </a>
+
+        </div>
+    </div>

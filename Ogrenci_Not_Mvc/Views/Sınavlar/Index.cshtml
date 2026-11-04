@@ -1,0 +1,94 @@
+﻿@using Ogrenci_Not_Mvc.Models.EntityFremework;
+@model List<TblNotlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /* Tablo içeriğini ve başlıkları ortalamak için CSS */
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+</style>
+
+<div class="container-fluid" style="margin-top: 20px;">
+
+    <!-- Sayfa Başlığı -->
+    <h2 style="color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+        <i class="glyphicon glyphicon-list-alt"></i> Sınav ve Not Girişi
+    </h2>
+    <br />
+
+    <!-- Tabloyu Saran Panel -->
+    <div class="panel panel-kurumsal">
+        <div class="panel-heading" style="font-size:16px;">
+            <i class="glyphicon glyphicon-th-list"></i> Öğrenci Not Listesi
+        </div>
+        <div class="panel-body" style="padding: 0;">
+            <!-- Padding'i 0 yaptık ki tablo tam otursun -->
+
+            <table class="table table-bordered table-striped table-hover" style="margin-bottom: 0;">
+                <thead>
+                    <tr class="tr-kurumsal">
+                        <!-- Başlık satırına hafif mavi arkaplan -->
+                        <th>Ders Adı</th>
+                        <th>Öğrenci</th>
+                        <th>Sınav 1</th>
+                        <th>Sınav 2</th>
+                        <th>Sınav 3</th>
+                        <th>Proje</th>
+                        <th>Ortalama</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var snv in Model)
+                    {
+                        <tr>
+                            <!-- Hata almamak için null kontrolü (Defensive Programming) -->
+                            <td>@(snv.TblDersler != null ? snv.TblDersler.DersAd : "Ders Yok")</td>
+                            <td>@(snv.TblOgrenciler != null ? snv.TblOgrenciler.OgrenciAd + " " + snv.TblOgrenciler.OgrenciSoyad : "Öğrenci Yok")</td>
+                            <td>@snv.Sınav1</td>
+                            <td>@snv.Sınav2</td>
+                            <td>@snv.Sınav3</td>
+                            <td>@snv.Proje</td>
+                            <td>@snv.Ortalama</td>
+
+                            <!-- Durumu True/False yerine Geçti/Kaldı olarak renkli gösterme -->
+                            <td>
+                                @if (snv.Durum == true)
+                                {
+                                    <span class="label label-success" style="font-size:13px;">Geçti</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-danger" style="font-size:13px;">Kaldı</span>
+                                }
+                            </td>
+
+                            <td>
+                                <!-- title özelliği sayesinde fareyle üzerine gelince ne olduğu yazar -->
+                                <a href="/Sınavlar/NotGetir/@snv.NotId" class="btn btn-warning btn-sm" title="Güncelle">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="/Sınavlar/NotSil/@snv.NotId"class="btn btn-danger btn-sm" title="Sil" onclick="return confirm('Silinsin mi?');">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- Butonu panelin en altına, tablo dışına aldık -->
+        <div class="panel-footer" style="text-align: left;">
+            <a href="/Sınavlar/NotEkle" class="btn btn-kurumsal"><i class="glyphicon glyphicon-plus"></i> Yeni Not Ekle</a>
+        </div>
+
+    </div>
+</div>
