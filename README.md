@@ -50,19 +50,19 @@ Projenin arayüzünden ve modüllerinden örnek görseller:
 
 | Karşılama Ekranı | Giriş Paneli |
 | :---: | :---: |
-| <img src="images/Ekran%20görünütüsü%202026-11-04%20213222.png" alt="Karşılama Ekranı" width="400"> | <img src="images/Ekran%20görünütüsü%202026-11-04%20213241.png" alt="Giriş Paneli" width="400"> |
+| <img src="images/giris.png" alt="Karşılama Ekranı" width="400"> | <img src="images/login.png" alt="Giriş Paneli" width="400"> |
 
 | Öğrenci Yönetim Paneli | Ders Yönetim Paneli |
 | :---: | :---: |
-| <img src="images/Ekran%20görünütüsü%202026-11-04%20213310.png" alt="Öğrenci Yönetimi" width="400"> | <img src="images/Ekran%20görünütüsü%202026-11-04%20213332.png" alt="Ders Yönetimi" width="400"> |
+| <img src="images/ogrenci.png" alt="Öğrenci Yönetimi" width="400"> | <img src="images/ders.png" alt="Ders Yönetimi" width="400"> |
 
 | Kulüp Yönetim Paneli | Sınav ve Not Girişi |
 | :---: | :---: |
-| <img src="images/Ekran%20görünütüsü%202026-11-04%20213345.png" alt="Kulüp Yönetimi" width="400"> | <img src="images/Ekran%20görünütüsü%202026-11-04%20213358.png" alt="Sınav ve Not Girişi" width="400"> |
+| <img src="images/kulup.png" alt="Kulüp Yönetimi" width="400"> | <img src="images/notlar.png" alt="Sınav ve Not Girişi" width="400"> |
 
 | Sistem İstatistikleri | |
 | :---: | :---: |
-| <img src="images/Ekran%20görünütüsü%202026-11-04%20213414.png" alt="Sistem İstatistikleri" width="400"> | |
+| <img src="images/istatistik.png" alt="Sistem İstatistikleri" width="400"> | |
 
 ---
 
