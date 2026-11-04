@@ -1,65 +1,84 @@
-# 🎓 Okul Yönetim ve Öğrenci Not Otomasyon Sistemi
+<div align="center">
+  <h1>🎓 Okul Yönetim ve Öğrenci Not Otomasyon Sistemi</h1>
+  <p>
+    <strong>Modern, Güvenli ve Kapsamlı ASP.NET MVC Okul Yönetim Platformu</strong>
+  </p>
+  <p>
+    <a href="#proje-hakkında">Proje Hakkında</a> •
+    <a href="#teknolojiler">Teknolojiler</a> •
+    <a href="#özellikler-ve-mimari">Özellikler & Mimari</a> •
+    <a href="#ekran-görüntüleri">Görseller</a> •
+    <a href="#geliştirici">Geliştirici</a>
+  </p>
+</div>
 
-ASP.NET MVC mimarisi kullanılarak geliştirilmiş, kurumsal güvenlik standartlarına ve modern arayüz tasarımına sahip kapsamlı bir okul ve öğrenci yönetim platformudur.
+<br />
 
----
+## 📖 Proje Hakkında
 
-## 🚀 Proje Hakkında
-Bu proje; eğitim kurumlarının öğrenci kayıtlarını, ders yönetimini, kulüp işlemlerini ve sınav/not ortalamalarını tek bir panel üzerinden dijital olarak yönetebilmesi amacıyla sıfırdan geliştirilmiştir. Temiz kod (Clean Code) prensipleri gözetilerek, Katmanlı Mimari (N-Tier Architecture) yaklaşımına uygun olarak tasarlanmıştır.
+**Okul Yönetim ve Öğrenci Not Otomasyon Sistemi**, eğitim kurumlarının dijital dünyadaki operasyon yükünü omuzlamak, veri akışını hızlandırmak ve öğrenci takip süreçlerini kusursuzlaştırarak tek bir merkezden yönetmek amacıyla sıfırdan geliştirilmiş profesyonel bir web uygulamasıdır. 
+
+Proje; modern ve esnek bir yapı sunan **ASP.NET MVC 5** mimarisiyle harmanlanmış, arka planda **Entity Framework** ve **LINQ** gücünü arkasına alarak veritabanı işlemlerini en optimize şekilde gerçekleştirecek şekilde tasarlanmıştır.
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler ve Altyapı
-* **Backend:** C#, ASP.NET MVC 5, LINQ, Entity Framework (EF) ORM
-* **Veritabanı Yönetimi:** MS SQL Server, T-SQL (İlişkisel Veritabanı Tasarımı)
-* **Güvenlik:** Forms Authentication (Kullanıcı Oturum ve Yetkilendirme Mekanizması)
-* **Frontend & Arayüz:** HTML5, CSS3, JavaScript, Bootstrap 3/4, Glassmorphism & Modern UI Tasarım Prensipleri
+
+* **Backend & Çatı:** C#, ASP.NET MVC 5, LINQ, Entity Framework (EF) ORM (Code-First / Database-First yaklaşımı)
+* **Veritabanı & Sorgulama:** MS SQL Server, T-SQL (İlişkisel Veritabanı Tasarımı, Stored Procedure ve Join operasyonları)
+* **Güvenlik & Oturum:** Forms Authentication, `[Authorize]` filtreleme mekanizmaları
+* **Frontend & Arayüz:** HTML5, CSS3, JavaScript, Bootstrap 3/4, Glassmorphism & Modern UI/UX Prensipleri
 * **Versiyon Kontrol:** Git, GitHub
 
 ---
 
-## 📸 Ekran Görüntüleri (UI / UX)
+## ⚙️ Başlıca Özellikler ve Mimari Detaylar
 
-### 1. Karşılama ve Giriş Ekranları
-Kullanıcıları karşılayan modern, buzlu cam (Glassmorphism) efektli ve okyanus tonlarındaki estetik giriş paneli:
-<p align="center">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213222.png" width="45%" alt="Karşılama Ekranı">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213241.png" width="45%" alt="Giriş Paneli">
-</p>
+Projeyi standart bir okul ödevinin ötesine taşıyan, arkasındaki mühendislik ve mimari detaylar şunlardır:
 
-### 2. Öğrenci Yönetim Paneli
-Kayıtlı öğrencilerin listelendiği, arama ve yönetim işlemlerinin yapıldığı ana ekran:
-<p align="center">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213310.png" width="100%" alt="Öğrenci Yönetimi">
-</p>
-
-### 3. Ders ve Kulüp İşlemleri
-Aktif derslerin ve okul kulüplerinin yönetildiği modüller:
-<p align="center">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213332.png" width="48%" alt="Ders Yönetimi">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213345.png" width="48%" alt="Kulüp Yönetimi">
-</p>
-
-### 4. Sınav ve Not Giriş Sistemi
-Öğrencilerin sınav notlarının işlendiği, ortalamaların hesaplandığı ve "Geçti / Kaldı" durumlarının otomatik listelendiği akıllı tablo:
-<p align="center">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213358.png" width="100%" alt="Sınav ve Not Girişi">
-</p>
-
-### 5. Sistem Destek ve İstatistik Paneli
-Genel okul istatistiklerinin (Toplam öğrenci, ders, kulüp, başarılı/başarısız öğrenci sayıları) anlık takip edildiği yönetim paneli:
-<p align="center">
-  <img src="images/Ekran%20görünütüsü%202026-11-04%20213414.png" width="100%" alt="Sistem İstatistikleri">
-</p>
+1. **Katmanlı ve Modüler Yapı:** Proje; Controllers, Models ve Views olarak net bir şekilde ayrılarak sürdürülebilir, okunabilir ve "Clean Code" prensiplerine uygun bir yapıda kodlanmıştır.
+2. **Güvenli Kimlik Doğrulama (Forms Authentication):** Yetkisiz kullanıcıların URL üzerinden doğrudan yönetim panellerine (Öğrenci, Ders, Not işlemleri) sızması `[Authorize]` öznitelikleriyle tamamen engellenmiştir. Sadece sisteme giriş yapan yetkililer içeriyi görebilir.
+3. **İlişkisel Veritabanı ve LINQ Entegrasyonu:** Öğrenciler, dersler, kulüpler ve sınav notları birbiriyle sıkı bir şekilde ilişkilendirilmiştir. Listeleme ve filtreleme işlemlerinde LINQ sorgularından maksimum performansla yararlanılmıştır.
+4. **Dinamik Not Hesaplama ve Başarı Algoritması:** Sınav 1, Sınav 2, Sınav 3 ve Proje notları girildiği anda sistem arka planda ortalamayı otomatik hesaplar; öğrencinin kalıp kalmadığını kontrol ederek arayüzde dinamik olarak **"Geçti"** veya **"Kaldı"** rozetlerini boyar.
+5. **Gelişmiş Arama ve Raporlama Desteği:** Kullanıcılar aradıkları öğrenciye anında ulaşabilir, sistem istatistikleri paneli üzerinden okulun genel durumunu (toplam öğrenci, aktif dersler, başarılı/başarısız öğrenci sayıları) anlık olarak grafiksel kartlarda izleyebilir.
 
 ---
 
-## ⚙️ Başlıca Özellikler ve Mimari Detaylar
-* **Güvenlik:** `[Authorize]` öznitelikleri ve `Forms Authentication` entegrasyonu ile yetkisiz kullanıcıların URL'ler üzerinden yönetim panellerine erişimi engellenmiştir.
-* **Veritabanı İlişkileri:** Entity Framework yaklaşımıyla öğrenciler, dersler ve kulüpler arasında güçlü ilişkisel tablolar kurulmuştur.
-* **Dinamik Hesaplamalar:** Sınav ve proje notları üzerinden otomatik ortalama hesaplama ve başarı durumuna göre dinamik arayüz renklendirmesi (Geçti/Kaldı rozetleri).
+## 📸 Ekran Görüntüleri
+
+Projenin arayüzünden ve modüllerinden örnek görseller:
+
+| Karşılama Ekranı | Giriş Paneli |
+| :---: | :---: |
+| <img src="images/Ekran%20görünütüsü%202026-11-04%20213222.png" alt="Karşılama Ekranı" width="400"> | <img src="images/Ekran%20görünütüsü%202026-11-04%20213241.png" alt="Giriş Paneli" width="400"> |
+
+| Öğrenci Yönetim Paneli | Ders Yönetim Paneli |
+| :---: | :---: |
+| <img src="images/Ekran%20görünütüsü%202026-11-04%20213310.png" alt="Öğrenci Yönetimi" width="400"> | <img src="images/Ekran%20görünütüsü%202026-11-04%20213332.png" alt="Ders Yönetimi" width="400"> |
+
+| Kulüp Yönetim Paneli | Sınav ve Not Girişi |
+| :---: | :---: |
+| <img src="images/Ekran%20görünütüsü%202026-11-04%20213345.png" alt="Kulüp Yönetimi" width="400"> | <img src="images/Ekran%20görünütüsü%202026-11-04%20213358.png" alt="Sınav ve Not Girişi" width="400"> |
+
+| Sistem İstatistikleri | |
+| :---: | :---: |
+| <img src="images/Ekran%20görünütüsü%202026-11-04%20213414.png" alt="Sistem İstatistikleri" width="400"> | |
+
+---
+
+## 📚 Geliştirici Notu & Önerilen Okuma
+
+Bu projeyi geliştirirken mimari kararları alırken ve kod kalitesini artırırken ilham aldığım, her yazılımcının kütüphanesinde bulunması gerektiğini düşündüğüm efsanevi bir kitap:
+
+* 📖 **Clean Code: A Handbook of Agile Software Craftsmanship** – *Robert C. Martin* (Yazılımcılığın sadece çalışan kod yazmak olmadığını, okunabilir ve sürdürülebilir kodun önemini anlatan başucu eser.)
 
 ---
 
 ## 👨‍💻 Geliştirici
+
 * **Emin Rahat** - [GitHub Profilim](https://github.com/eminrahat)
+
+<div align="center">
+  <br>
+  <p>🌟 Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!</p>
+</div>
